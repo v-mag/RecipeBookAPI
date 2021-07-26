@@ -6,8 +6,11 @@ namespace RecipeBookAPI.Models
     {
         public int Id { get; set; }
         public string title { get; set; }
-        public int servingPersons { get; set; }
-        public int time { get; set; }
         public string image { get; set; }
+        public int readyInMinutes { get; set; }
+        public int servings { get; set; }
+        public int aggregateLikes { get; set; }
+        public string instructions { get; set; }
+        public int healthScore { get; set; }
     }
 }
