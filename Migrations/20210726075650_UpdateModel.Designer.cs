@@ -8,7 +8,7 @@ using RecipeBookAPI.Models;
 
 namespace RecipeBookAPI.Migrations
 {
-    [DbContext(typeof(RecipeContext))]
+    [DbContext(typeof(DataContext))]
     [Migration("20210726075650_UpdateModel")]
     partial class UpdateModel
     {

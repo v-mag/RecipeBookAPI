@@ -9,9 +9,9 @@ namespace RecipeBookAPI.Services
 {
     public class RecipeService
     {
-        private readonly RecipeContext _context;
+        private readonly DataContext _context;
 
-        public RecipeService(RecipeContext context)
+        public RecipeService(DataContext context)
         {
             _context = context;
         }

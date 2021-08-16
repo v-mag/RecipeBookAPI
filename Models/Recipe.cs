@@ -1,5 +1,3 @@
-using System;
-
 namespace RecipeBookAPI.Models
 {
     public class Recipe 

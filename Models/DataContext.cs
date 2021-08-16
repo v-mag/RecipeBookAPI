@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 
 namespace RecipeBookAPI.Models
 {
-    public class RecipeContext : DbContext
+    public class DataContext : DbContext
     {
-        public RecipeContext(DbContextOptions<RecipeContext> options) : base(options) { }
+        public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
         public DbSet<Recipe> Recipes { get; set; }
+
+        public DbSet<User> Users { get; set; }
     }
 }
