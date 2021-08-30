@@ -37,7 +37,6 @@ namespace RecipeBookAPI.Services
             await _context.SaveChangesAsync();
         }
 
-
         public async Task Update(Recipe recipe)
         {
             var recipeToUpdate = await _context.Recipes.FindAsync(recipe.Id);

@@ -41,6 +41,7 @@ namespace RecipeBookAPI
 
             //services.AddScoped(provider => provider.GetService<RecipeContext>());
             services.AddScoped<RecipeService>();
+            services.AddScoped<ApiRecipeService>();
 
             services.AddControllers();
 

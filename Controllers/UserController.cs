@@ -102,6 +102,15 @@ namespace RecipeBookAPI.Controllers
             return Ok(model);
         }
 
+        [AllowAnonymous]
+        [HttpGet("/find/{username}")]
+        public IActionResult GetByUsername(string username)
+        {
+            var user = _userService.GetByUsername(username);
+            var model = _mapper.Map<UserModel>(user);
+            return Ok(model);
+        }
+
         [HttpPut("{id}")]
         public IActionResult Update(int id, [FromBody] UpdateModel model)
         {

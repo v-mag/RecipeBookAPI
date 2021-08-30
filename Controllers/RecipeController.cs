@@ -13,23 +13,25 @@ namespace RecipeBookAPI.Controllers
     [Route("[controller]")]
     public class RecipeController : ControllerBase
     {
-        private readonly RecipeService _service;
-        public RecipeController(RecipeService service)
+        private readonly RecipeService _recipeService;
+        private readonly ApiRecipeService _apiRecipeService;
+        public RecipeController(RecipeService service, ApiRecipeService apiService)
         {
-            _service = service;
+            _recipeService = service;
+            _apiRecipeService = apiService;
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Recipe>>> GetAll()
         {
-            var recipes = await _service.GetAll();
+            var recipes = await _recipeService.GetAll();
             return Ok(recipes);
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Recipe>> Get(int id)
         {
-            var recipe = await _service.Get(id);
+            var recipe = await _recipeService.Get(id);
 
             if (recipe == null)
                 return NotFound();
@@ -37,24 +39,31 @@ namespace RecipeBookAPI.Controllers
             return Ok(recipe);
         }
 
+        [HttpGet("/random/{tag}")]
+        public async Task<ActionResult<Recipe>> GetRandomRecipe(string tag)
+        {
+            var recipe = await _apiRecipeService.GetRandomRecipes(tag);
+            return Ok(recipe);
+        }
+
         [HttpPost]
         public async Task<ActionResult> Create(Recipe recipe)
         {
-            await _service.Add(recipe);
+            await _recipeService.Add(recipe);
             return Ok();
         }
 
         [HttpPut]
         public async Task<ActionResult> Update(Recipe recipe)
         {
-            await _service.Update(recipe);
+            await _recipeService.Update(recipe);
             return Ok();
         }
 
         [HttpDelete]
         public async Task<ActionResult> Delete(int id)
         {
-            await _service.Delete(id);
+            await _recipeService.Delete(id);
             return Ok();
         }
     }
